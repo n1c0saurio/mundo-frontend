@@ -12,7 +12,8 @@ class BodegaController extends Controller
      */
     public function index()
     {
-        //
+        $bodegas = Bodega::all();
+        return response()->json($bodegas);
     }
 
     /**
@@ -61,5 +62,14 @@ class BodegaController extends Controller
     public function destroy(Bodega $bodega)
     {
         //
+    }
+
+    /**
+     * Listar dispositivos existentes en una bodega
+     */
+    public function listarDispositivos(Bodega $bodega)
+    {
+        $dispositivos = $bodega->dispositivos()->get();
+        return response()->json($dispositivos); #TODO: falta formato
     }
 }
