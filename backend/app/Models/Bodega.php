@@ -13,8 +13,8 @@ class Bodega extends Model
     /**
      * Recupera los dispositivos existentes en la bodega
      */
-    public function modelos(): HasMany
+    public function dispositivos(): HasMany
     {
-        return $this->hasMany(Modelo::class);
+        return $this->hasMany(Dispositivo::class);
     }
 }
