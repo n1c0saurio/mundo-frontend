@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/marcas', 'App\Http\Controllers\MarcaController@index');
+Route::get('/marcas/{marca}', 'App\Http\Controllers\MarcaController@show');
+Route::get('/marcas/{marca}/modelos', 'App\Http\Controllers\MarcaController@listarModelos');
+Route::get('/marcas/{marca}/dispositivos', 'App\Http\Controllers\MarcaController@listarDispositivos');

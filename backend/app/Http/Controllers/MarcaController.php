@@ -12,7 +12,8 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        //
+        $marcas = Marca::all();
+        return response()->json($marcas); #TODO: falta formato
     }
 
     /**
@@ -36,7 +37,7 @@ class MarcaController extends Controller
      */
     public function show(Marca $marca)
     {
-        //
+        return response()->json($marca);
     }
 
     /**
@@ -61,5 +62,24 @@ class MarcaController extends Controller
     public function destroy(Marca $marca)
     {
         //
+    }
+
+    /**
+     * Listar modelos de una marca
+     */
+    public function listarModelos(Marca $marca)
+    {
+        $modelos = $marca->modelos()->get();
+        return response()->json($modelos); #TODO: falta formato
+    }
+
+    /**
+     * Listar dispositivos de una marca
+     */
+    public function listarDispositivos(Marca $marca)
+    {
+        // $dispositivos = $marca->modelos()->with('dispositivos')->get()->pluck('dispositivos');
+        $dispositivos = Marca::with('modelos.dispositivos')->where('id', $marca->id)->get();
+        return response()->json($dispositivos); #TODO: falta formato
     }
 }
