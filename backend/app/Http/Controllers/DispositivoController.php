@@ -12,7 +12,8 @@ class DispositivoController extends Controller
      */
     public function index()
     {
-        //
+        $dispositivos = Dispositivo::all();
+        return response()->json($dispositivos); # TODO: ajustar al formato
     }
 
     /**

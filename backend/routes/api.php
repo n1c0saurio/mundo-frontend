@@ -38,3 +38,8 @@ Route::get('/modelos/{modelo}/dispositivos', 'App\Http\Controllers\ModeloControl
  */
 Route::get('/bodegas', 'App\Http\Controllers\BodegaController@index');
 Route::get('/bodegas/{bodega}/dispositivos', 'App\Http\Controllers\BodegaController@listarDispositivos');
+
+/**
+ * Rutas para la API de Dispositivo
+ */
+Route::get('/dispositivos', 'App\Http\Controllers\DispositivoController@index');
