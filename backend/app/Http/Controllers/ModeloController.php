@@ -12,7 +12,8 @@ class ModeloController extends Controller
      */
     public function index()
     {
-        //
+        $modelos = Modelo::all();
+        return response()->json($modelos);
     }
 
     /**
@@ -61,5 +62,23 @@ class ModeloController extends Controller
     public function destroy(Modelo $modelo)
     {
         //
+    }
+
+    /**
+     * Listar modelos por marca
+     */
+    public function listarPorMarca($marca_id)
+    {
+        $modelos = Modelo::where('marca_id', $marca_id)->get();
+        return response()->json($modelos); #TODO: falta formato
+    }
+
+    /**
+     * Listar dispositivos asociados a un modelo
+     */
+    public function listarDispositivos(Modelo $modelo)
+    {
+        $dispositivos = $modelo->dispositivos()->get();
+        return response()->json($dispositivos); #TODO: falta formato
     }
 }

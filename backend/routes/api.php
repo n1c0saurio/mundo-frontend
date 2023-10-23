@@ -18,7 +18,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/**
+ * Rutas para la API de Marcas
+ */
 Route::get('/marcas', 'App\Http\Controllers\MarcaController@index');
 Route::get('/marcas/{marca}', 'App\Http\Controllers\MarcaController@show');
 Route::get('/marcas/{marca}/modelos', 'App\Http\Controllers\MarcaController@listarModelos');
 Route::get('/marcas/{marca}/dispositivos', 'App\Http\Controllers\MarcaController@listarDispositivos');
+
+/**
+ * Rutas para la API de Modelos
+ */
+Route::get('/modelos', 'App\Http\Controllers\ModeloController@index');
+Route::get('/modelos/marca/{marca_id}', 'App\Http\Controllers\ModeloController@listarPorMarca');
+Route::get('/modelos/{modelo}/dispositivos', 'App\Http\Controllers\ModeloController@listarDispositivos');
