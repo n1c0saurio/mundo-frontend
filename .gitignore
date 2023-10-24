@@ -1,4 +1,5 @@
 nginx.conf
+Dockerfile
 PHP.Dockerfile
 docker-compose.yml
 test_evaluacion_inicial_v3.pdf
