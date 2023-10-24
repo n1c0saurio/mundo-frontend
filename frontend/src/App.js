@@ -19,17 +19,10 @@ function App() {
   const [marcaDeModelo, setMarcaDeModelo] = useState("");
 
   function filtroDispositivos(dispositivo) {
-    let match = true;
-    if (filtroBodega) {
-      match = dispositivo.bodega !== filtroBodega ? false : match;
-    }
-    if (filtroMarca) {
-      match = dispositivo.marca !== filtroMarca ? false : match;
-    }
-    if (filtroModelo) {
-      match = dispositivo.modelo !== filtroModelo ? false : match;
-    }
-    return match;
+    if (filtroBodega && dispositivo.bodega !== filtroBodega) return false;
+    if (filtroMarca && dispositivo.marca !== filtroMarca) return false;
+    if (filtroModelo && dispositivo.modelo !== filtroModelo) return false;
+    return true;
   }
 
   return (
