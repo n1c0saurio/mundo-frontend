@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 1rem;
 }
 
 .App-logo {
@@ -35,4 +36,45 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Select layout */
+
+#selectWrapper {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+#selectWrapper select {
+  flex-basis: 33%;
+}
+
+/* Select style */
+
+select {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* List style */
+
+table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+table th,
+table td {
+  padding: 0.5rem;
+}
+
+table tr:nth-child(even) {
+  background-color: whitesmoke;
+}
+
+table tr:hover {
+  background-color: gainsboro;
 }
