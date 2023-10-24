@@ -16,7 +16,10 @@ class ItemSeeder extends Seeder
     public function run(): void
     {
         $marcas = Marca::all();
-
+        
+        /**
+         * Ejecuta el seeder solo si no hay elementos en la BB.DD.
+         */
         if ($marcas->isEmpty()) {
             Marca::factory(5)
                 ->has(Modelo::factory(5)

@@ -15,6 +15,9 @@ class BodegaSeeder extends Seeder
     {
         $bodegas = DB::table('bodegas')->get();
         
+        /**
+         * Ejecuta el seeder solo si no hay elementos en la BB.DD.
+         */
         if ($bodegas->isEmpty()) {
             DB::table('bodegas')->insert([
                 [
