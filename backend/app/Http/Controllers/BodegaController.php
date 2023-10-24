@@ -69,7 +69,15 @@ class BodegaController extends Controller
      */
     public function listarDispositivos(Bodega $bodega)
     {
-        $dispositivos = $bodega->dispositivos()->get();
-        return response()->json($dispositivos); #TODO: falta formato
+        $dispositivos = $bodega->dispositivos()
+            ->join('modelos', 'modelos.id', '=', 'dispositivos.modelo_id')
+            ->join('marcas', 'marcas.id', '=', 'modelos.marca_id')
+            ->get([
+                'dispositivos.id as id',
+                'dispositivos.nombre as nombre',
+                'modelos.nombre as modelo',
+                'marcas.nombre as marcas'
+            ]);
+        return response()->json($dispositivos);
     }
 }

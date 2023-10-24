@@ -69,8 +69,8 @@ class ModeloController extends Controller
      */
     public function listarPorMarca($marca_id)
     {
-        $modelos = Modelo::where('marca_id', $marca_id)->get();
-        return response()->json($modelos); #TODO: falta formato
+        $modelos = Modelo::where('marca_id', $marca_id)->get(['id', 'nombre']);
+        return response()->json($modelos);
     }
 
     /**
@@ -78,7 +78,7 @@ class ModeloController extends Controller
      */
     public function listarDispositivos(Modelo $modelo)
     {
-        $dispositivos = $modelo->dispositivos()->get();
-        return response()->json($dispositivos); #TODO: falta formato
+        $dispositivos = $modelo->dispositivos()->get(['id', 'nombre']);
+        return response()->json($dispositivos);
     }
 }

@@ -12,8 +12,18 @@ class DispositivoController extends Controller
      */
     public function index()
     {
-        $dispositivos = Dispositivo::all();
-        return response()->json($dispositivos); # TODO: ajustar al formato
+        $dispositivos = Dispositivo
+            ::join('bodegas', 'dispositivos.bodega_id', '=', 'bodegas.id')
+            ->join('modelos', 'dispositivos.modelo_id', '=', 'modelos.id')
+            ->join('marcas', 'modelos.marca_id', '=', 'marcas.id')
+            ->get([
+                'dispositivos.id as id',
+                'dispositivos.nombre as nombre',
+                'marcas.nombre as marca',
+                'modelos.nombre as modelo',
+                'bodegas.nombre as bodega'
+            ]);
+        return response()->json($dispositivos);
     }
 
     /**

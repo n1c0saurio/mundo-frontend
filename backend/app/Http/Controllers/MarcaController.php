@@ -12,8 +12,8 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        $marcas = Marca::all();
-        return response()->json($marcas); #TODO: falta formato
+        $marcas = Marca::all(['id', 'nombre']);
+        return response()->json($marcas);
     }
 
     /**
@@ -69,8 +69,14 @@ class MarcaController extends Controller
      */
     public function listarModelos(Marca $marca)
     {
-        $modelos = $marca->modelos()->get();
-        return response()->json($modelos); #TODO: falta formato
+        $modelos = $marca->modelos()
+            ->join('marcas', 'modelos.marca_id', '=', 'marcas.id')
+            ->get([
+                'modelos.id as id',
+                'modelos.nombre as nombre',
+                'marcas.nombre as marca'
+            ]);
+        return response()->json($modelos);
     }
 
     /**
@@ -78,8 +84,15 @@ class MarcaController extends Controller
      */
     public function listarDispositivos(Marca $marca)
     {
-        // $dispositivos = $marca->modelos()->with('dispositivos')->get()->pluck('dispositivos');
-        $dispositivos = Marca::with('modelos.dispositivos')->where('id', $marca->id)->get();
-        return response()->json($dispositivos); #TODO: falta formato
+        $dispositivos = Marca::where('marcas.id', $marca->id)
+            ->join('modelos', 'marcas.id', '=', 'modelos.marca_id')
+            ->join('dispositivos', 'modelos.id', '=', 'dispositivos.modelo_id')
+            ->get([
+                'dispositivos.id as id',
+                'dispositivos.nombre as nombre',
+                'marcas.nombre as marca',
+                'modelos.nombre as modelo'
+            ]);
+        return response()->json($dispositivos);
     }
 }
