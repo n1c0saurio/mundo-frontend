@@ -86,11 +86,11 @@ function App() {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Bodega</th>
+              <th className="table-id">ID</th>
+              <th className="table-nombre">Nombre</th>
+              <th className="table-marca">Marca</th>
+              <th className="table-modelo">Modelo</th>
+              <th className="table-bodega">Bodega</th>
             </tr>
           </thead>
           <tbody>
@@ -98,11 +98,11 @@ function App() {
               ?.filter((dispositivo) => filtroDispositivos(dispositivo))
               .map((dispositivo) => (
                 <tr key={dispositivo.id}>
-                  <td>{dispositivo.id}</td>
-                  <td>{dispositivo.nombre}</td>
-                  <td>{dispositivo.marca}</td>
-                  <td>{dispositivo.modelo}</td>
-                  <td>{dispositivo.bodega}</td>
+                  <td className="table-id">{dispositivo.id}</td>
+                  <td className="table-nombre">{dispositivo.nombre}</td>
+                  <td className="table-marca">{dispositivo.marca}</td>
+                  <td className="table-modelo">{dispositivo.modelo}</td>
+                  <td className="table-bodega">{dispositivo.bodega}</td>
                 </tr>
               ))}
           </tbody>

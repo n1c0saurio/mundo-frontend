@@ -78,3 +78,17 @@ table tr:nth-child(even) {
 table tr:hover {
   background-color: gainsboro;
 }
+
+.table-id {
+  width: 10%;
+}
+
+.table-nombre,
+.table-modelo,
+.table-bodega {
+  width: 20%;
+}
+
+.table-marca {
+  width: 30%;
+}
