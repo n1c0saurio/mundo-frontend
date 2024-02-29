@@ -1,0 +1,32 @@
+table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+table th,
+table td {
+  padding: 0.5rem;
+}
+
+table tr:nth-child(even) {
+  background-color: whitesmoke;
+}
+
+table tr:hover {
+  background-color: gainsboro;
+}
+
+.table__id {
+  width: 10%;
+}
+
+.table__name,
+.table__model,
+.table__warehouse {
+  width: 20%;
+}
+
+.table__brand {
+  width: 30%;
+}

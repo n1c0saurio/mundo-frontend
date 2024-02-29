@@ -1,6 +1,7 @@
 import { Suspense, useState } from "react";
 import { fetchData } from "./utils/fetchAPI";
 import "./styles/App.css";
+import Table from "./components/Table";
 
 const apiBodegas = fetchData("http://localhost:8080/api/bodegas");
 const apiMarcas = fetchData("http://localhost:8080/api/marcas");
@@ -76,30 +77,7 @@ function App() {
           </select>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th className="table-id">ID</th>
-              <th className="table-nombre">Nombre</th>
-              <th className="table-marca">Marca</th>
-              <th className="table-modelo">Modelo</th>
-              <th className="table-bodega">Bodega</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dispositivos
-              ?.filter((dispositivo) => filtroDispositivos(dispositivo))
-              .map((dispositivo) => (
-                <tr key={dispositivo.id}>
-                  <td className="table-id">{dispositivo.id}</td>
-                  <td className="table-nombre">{dispositivo.nombre}</td>
-                  <td className="table-marca">{dispositivo.marca}</td>
-                  <td className="table-modelo">{dispositivo.modelo}</td>
-                  <td className="table-bodega">{dispositivo.bodega}</td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+        <Table devices={dispositivos} deviceFilter={filtroDispositivos} />
       </Suspense>
     </div>
   );
