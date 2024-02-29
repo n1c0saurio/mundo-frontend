@@ -1,6 +1,6 @@
 import { Suspense, useState } from "react";
 import { fetchData } from "./utils/fetchAPI";
-import "./App.css";
+import "./styles/App.css";
 
 const apiBodegas = fetchData("http://localhost:8080/api/bodegas");
 const apiMarcas = fetchData("http://localhost:8080/api/marcas");
