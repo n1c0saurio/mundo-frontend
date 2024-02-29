@@ -1,5 +1,5 @@
 import { Suspense, useState } from "react";
-import { fetchData } from "./fetchData";
+import { fetchData } from "./utils/fetchAPI";
 import "./App.css";
 
 const apiBodegas = fetchData("http://localhost:8080/api/bodegas");
