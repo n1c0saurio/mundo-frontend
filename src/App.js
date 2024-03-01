@@ -2,6 +2,7 @@ import { Suspense, useState } from "react";
 import { fetchData } from "./utils/fetchAPI";
 import "./styles/App.css";
 import Table from "./components/Table";
+import Filters from "./components/Filters";
 
 const apiBodegas = fetchData("http://localhost:8080/api/bodegas");
 const apiMarcas = fetchData("http://localhost:8080/api/marcas");
@@ -30,53 +31,17 @@ function App() {
     <div className="App">
       <h1>Listado de dispositivos</h1>
       <Suspense fallback={<div>Cargando...</div>}>
-        <div id="selectWrapper">
-          <select
-            name="bodega"
-            onChange={(e) => setFiltroBodega(e.target.value)}
-          >
-            <option value=""></option>
-            {bodegas?.map((bodega) => (
-              <option value={bodega.nombre}>{bodega.nombre}</option>
-            ))}
-          </select>
-
-          <select
-            name="marca"
-            onChange={(e) => {
-              if (e.target.value) {
-                const marca = JSON.parse(e.target.value);
-                setFiltroMarca(marca.nombre);
-                setMarcaDeModelo(marca.id);
-              } else {
-                setFiltroMarca("");
-                setFiltroModelo("");
-                setMarcaDeModelo("");
-              }
-            }}
-          >
-            <option value=""></option>
-            {marcas?.map((marca) => (
-              <option value={JSON.stringify(marca)}>{marca.nombre}</option>
-            ))}
-          </select>
-
-          <select
-            name="modelo"
-            onChange={(e) => setFiltroModelo(e.target.value)}
-          >
-            <option value="">
-              {filtroMarca ? "" : "Seleccione una marca primero"}
-            </option>
-            ;
-            {modelos
-              ?.filter((modelo) => modelo.marca_id == marcaDeModelo)
-              .map((modelo) => (
-                <option value={modelo.nombre}>{modelo.nombre}</option>
-              ))}
-          </select>
-        </div>
-
+        <Filters
+          warehouses={bodegas}
+          brands={marcas}
+          models={modelos}
+          setWarehouseFilter={setFiltroBodega}
+          setBrandFilter={setFiltroMarca}
+          setModelFilter={setFiltroModelo}
+          brandFilter={filtroMarca}
+          marcaDeModelo={marcaDeModelo}
+          setMarcaDeModelo={setMarcaDeModelo}
+        />
         <Table devices={dispositivos} deviceFilter={filtroDispositivos} />
       </Suspense>
     </div>

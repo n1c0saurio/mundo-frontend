@@ -37,23 +37,3 @@
     transform: rotate(360deg);
   }
 }
-
-/* Select layout */
-
-#selectWrapper {
-  display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-#selectWrapper select {
-  flex-basis: 33%;
-}
-
-/* Select style */
-
-select {
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-}
