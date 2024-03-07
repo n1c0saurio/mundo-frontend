@@ -1,0 +1,15 @@
+@use "colors";
+@use "sizes";
+
+.App {
+  background-color: colors.$background;
+  color: colors.$base;
+  margin: 0 auto;
+  max-width: sizes.$tablet--large;
+  padding: 1rem;
+}
+
+h1 {
+  margin: 3rem 0 2rem;
+  text-align: center;
+}

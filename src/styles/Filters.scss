@@ -1,0 +1,30 @@
+@use "colors";
+@use "sizes";
+
+#filters {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+#filters select {
+  background-color: colors.$gray--light;
+  border: none;
+  border-radius: 0.5rem;
+  flex-basis: 33%;
+  font-size: 1.1rem;
+  padding: 0.75rem;
+}
+
+@media screen and (max-width: sizes.$tablet--small) {
+  #filters {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: sizes.$tablet--small) {
+  #filters {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,73 @@
+@use "colors";
+@use "sizes";
+
+#devices {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+#devices th,
+#devices td {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+#devices th {
+  top: 0;
+  position: sticky;
+  background-color: colors.$background;
+}
+
+#devices tr:nth-child(odd) {
+  background-color: colors.$gray--light;
+}
+
+#devices tr:hover {
+  background-color: colors.$primary;
+}
+
+.table__id {
+  grid-area: id;
+}
+
+.table__warehouse {
+  grid-area: warehouse;
+}
+
+.table__brand {
+  grid-area: brand;
+}
+
+.table__model {
+  grid-area: model;
+}
+
+.table__name {
+  grid-area: device;
+}
+
+@media screen and (max-width: sizes.$tablet--small) {
+  #devices tr {
+    display: grid;
+    grid-template-areas:
+      "id device device device"
+      "id warehouse brand model";
+  }
+}
+
+@media screen and (min-width: sizes.$tablet--small) {
+  .table__id {
+    width: 10%;
+  }
+
+  .table__name,
+  .table__model,
+  .table__warehouse {
+    width: 20%;
+  }
+
+  .table__brand {
+    width: 30%;
+  }
+}

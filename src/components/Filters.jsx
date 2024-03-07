@@ -1,4 +1,4 @@
-import "../styles/Filters.css";
+import "../styles/Filters.scss";
 
 function Filters({
   warehouses,

@@ -1,8 +1,8 @@
-import "../styles/Table.css";
+import "../styles/Table.scss";
 
 function Table({ devices, deviceFilter }) {
   return (
-    <table>
+    <table id="devices">
       <thead>
         <tr>
           <th className="table__id">ID</th>

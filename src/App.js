@@ -1,6 +1,6 @@
 import { Suspense, useState } from "react";
 import { fetchData } from "./utils/fetchAPI";
-import "./styles/App.css";
+import "./styles/App.scss";
 import Table from "./components/Table";
 import Filters from "./components/Filters";
 
